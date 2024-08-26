@@ -5,7 +5,7 @@
  * @noSelf
  */
 declare namespace Ambush {
-  /** Returns the current wave for the ongoing ambush. */
+  /** Returns the current wave of the ongoing ambush. */
   function GetCurrentWave(): int;
 
   /**
@@ -32,14 +32,18 @@ declare namespace Ambush {
   function GetNextWave(): RoomConfig;
 
   /** Returns an array containing the `RoomConfig` of the next Challenge Room waves. */
-  function GetNextWaves(): RoomConfig[];
+  function GetNextWaves(): ReadonlyArray<RoomConfig>;
 
   /** Sets the maximum amount of Boss Rush waves. This is currently capped at 25. */
   function SetMaxBossrushWaves(waves: int): void;
 
   /**
-   * Sets the maximum amount of Challenge Room waves. The new amount of waves will persist across
-   * runs until the game restarts.
+   * Sets the maximum amount of Challenge Room waves.
+   *
+   * This method is currently bugged as the maximum amount of challenge room waves is not reset
+   * until the game restarts. You will need to manually reset it in the
+   * `ModCallbackCustom.POST_GAME_STARTED_REORDERED` callback.
+   *
    */
   function SetMaxChallengeWaves(waves: int): void;
 
@@ -48,8 +52,10 @@ declare namespace Ambush {
   /**
    * Spawns a Challenge Room wave associated with the current floor.
    *
-   * Calling this method will result in a crash if:
-   *  - The current floor is Blue Womb.
+   * This method is currently bugged as it can crash under the following circumstances:
+   *  - The current floor does not have any challenge rooms.
+   *    * The only floor that does not have any challenge rooms under normal circumstances is Blue
+   *      Womb.
    *  - The current difficulty is either Greed or Greedier.
    */
   function SpawnWave(): void;
@@ -58,8 +64,8 @@ declare namespace Ambush {
    * Starts the Challenge or Boss Rush if the player is in a Challenge Room or Boss Rush room
    * respectively.
    *
-   * Calling this method outside of these rooms will permanently close the doors and not spawn any
-   * waves, resulting in a softlock.
+   * Calling this method outside of Challenge Rooms and Boss Rush rooms will permanently close the
+   * doors and not spawn any waves, resulting in a softlock.
    */
   function StartChallenge(): void;
 }
