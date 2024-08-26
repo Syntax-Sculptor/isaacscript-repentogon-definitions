@@ -58,7 +58,7 @@ declare global {
      */
     DoLightningStrike: (seed?: Seed) => void;
 
-    // `GetBackdrop` is currently unimplemented as the `Image` class is not complete.
+    GetBackdrop: () => Backdrop;
 
     /** Returns a `Camera` object. */
     GetCamera: () => Camera;
