@@ -24,21 +24,33 @@ declare function Point(
  * @see https://repentogon.com/
  */
 declare interface Point extends IsaacAPIClass {
+  /** Returns the point's color. */
+  GetColor: () => Color;
+
+  /** Returns whether the point's position is automatically converted from world-space to screen-space when rendering. */
+  GetIsWorldSpace: () => boolean;
+
+  /** Returns the position of the point. */
+  GetPosition: () => Vector;
+
   /** Returns the vertical position of the point. */
   GetSpritesheetCoordinate: () => number;
 
   /** Returns the width multiplier of the point. */
   GetWidth: () => number;
 
-  /** Returns the position of the point. */
-  GetPosition: () => Vector;
+  /** Sets the point's color. The color is interpolated between points. */
+  SetColor: (color: Color) => void;
+
+  /** Sets whether the point's position is automatically converted from world-space to screen-space when rendering. */
+  SetIsWorldSpace: (isWorldSpace: boolean) => void;
 
   /** Sets the vertical position of the point. */
   SetSpritesheetCoordinate: (height: number) => void;
 
-  /** Sets the width multiplier of the point. */
-  SetWidth: (width: number) => void;
-
   /** Sets the position of the point. */
   SetPosition: (position: Vector) => void;
+
+  /** Sets the width multiplier of the point. */
+  SetWidth: (width: number) => void;
 }
