@@ -10,7 +10,7 @@ declare global {
     GetDimension: () => Dimension;
     GetEntitiesSaveState: () => EntitiesSaveStateVector;
     GetGridEntitiesSaveState: () => GridEntitiesSaveStateVector;
-    GetNeighboringRooms: () => LuaTable<DoorSlot, RoomDescriptor>;
+    GetNeighboringRooms: () => ReadonlyLuaMap<DoorSlot, RoomDescriptor>;
     GetRestrictedGridIndexes: () => int[];
     InitSeeds: (rng: RNG) => void;
 

@@ -83,7 +83,7 @@ declare global {
       gridIndex: int,
       roomShape: RoomShape,
       dimension?: Dimension,
-    ) => LuaTable<DoorSlot, RoomDescriptor>;
+    ) => ReadonlyLuaMap<DoorSlot, RoomDescriptor>;
 
     /** Returns whether the special quest is forced. */
     GetForceSpecialQuest: () => SpecialQuest;
