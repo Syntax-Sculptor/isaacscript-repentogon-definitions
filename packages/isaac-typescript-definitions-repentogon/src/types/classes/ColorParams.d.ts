@@ -1,3 +1,11 @@
+/**
+ * Constructs a new `ColorParams` object. The `ColorParams` object can be used to set how an entity
+ * changes its color.
+ *
+ * This class is for REPENTOGON, an exe-hack which expands the modding API.
+ *
+ * @see https://repentogon.com/
+ */
 declare function ColorParams(
   this: void,
   color: Color,
