@@ -1,7 +1,9 @@
 /**
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
- * @see https://repentogon.com/
+ * The Ambush class is used to handle Challenge Rooms and Boss Rushes.
+ *
+ * @see https://repentogon.com/index.html
  * @noSelf
  */
 declare namespace Ambush {
@@ -49,17 +51,19 @@ declare namespace Ambush {
    * Spawns a Challenge Room wave associated with the current floor.
    *
    * Calling this method will result in a crash if:
-   *  - The current floor is Blue Womb.
+   *  - The current floor's stb file doesn't have any rooms associated with Challenge Rooms. Under
+   *    normal circumstances, the only floor to have no Challenge Rooms is Blue Womb.
    *  - The current difficulty is either Greed or Greedier.
    */
   function SpawnWave(): void;
 
   /**
-   * Starts the Challenge or Boss Rush if the player is in a Challenge Room or Boss Rush room
-   * respectively.
+   * Begins the ambush if the player is in a Challenge Room or Boss Rush room respectively. Does
+   * nothing if the ambush waves have already been cleared.
    *
    * Calling this method outside of these rooms will permanently close the doors and not spawn any
-   * waves, resulting in a softlock.
+   * waves, resulting in a softlock. To work around this, you can check to see if the player is in a
+   * Challenge Room or Boss Rush room by using Isaacscript Common's `getAmbushType()` function.
    */
   function StartChallenge(): void;
 }
