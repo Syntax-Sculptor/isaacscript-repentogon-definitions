@@ -1,5 +1,6 @@
 /**
- * Creates a new `WeightedOutcomePicker` object.
+ * Creates a new `WeightedOutcomePicker` object. The weighted outcome picker allows you to store
+ * values with unique weights and lets you randomly choose one.
  *
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
