@@ -1,5 +1,6 @@
 /**
- * Constructs a new beam object.
+ * Constructs a new beam object. The beam object is used to render a line that connects to multiple
+ * points.
  *
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
@@ -21,6 +22,9 @@ declare function Beam(
 ): RenderBeam;
 
 /**
+ * Constructs a new beam object. The beam object is used to render a line that connects to multiple
+ * points.
+ *
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
  * @see https://repentogon.com/
@@ -34,13 +38,14 @@ declare interface RenderBeam extends IsaacAPIClass {
    *
    * @param point
    * @param position
-   * @param spritesheetCoordinate
+   * @param spritesheetCoordinate The Y position of the spritesheet that should be drawn by the time
+   *                              the Point is reached.
    * @param width Optional. Default is 1.
    */
   Add: ((point: Point) => void) &
     ((position: Vector, spritesheetCoordinate: number, width?: number) => void);
 
-  /** Returns the layer of the beam. */
+  /** Returns the beam's layer.. */
   GetLayer: () => int;
 
   /** Returns an array of all of the points the beam has. */
@@ -57,7 +62,7 @@ declare interface RenderBeam extends IsaacAPIClass {
    *
    * @param clearPoints Optional. Default is true.
    */
-  Render: (clearPoints: boolean) => void;
+  Render: (clearPoints?: boolean) => void;
 
   /** Sets the beam's layer. */
   SetLayer: (layerIdOrName: int | string) => void;
