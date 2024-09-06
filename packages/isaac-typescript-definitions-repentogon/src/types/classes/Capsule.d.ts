@@ -24,6 +24,13 @@ declare function Capsule(
   size: number,
 ): Capsule;
 
+declare function Capsule(
+  this: void,
+  position: Vector,
+  targetPosition: Vector,
+  size: number,
+): Capsule;
+
 /**
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
@@ -34,6 +41,8 @@ declare interface Capsule extends IsaacAPIClass {
   GetDirection: () => Vector;
   GetF1: () => number;
   GetF2: () => number;
+
+  /** Returns the capsule's position. */
   GetPosition: () => Vector;
   GetVec2: () => Vector;
   GetVec3: () => Vector;
