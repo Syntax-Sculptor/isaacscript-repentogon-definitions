@@ -1,4 +1,6 @@
 /**
+ * This class is used to handle daily challenges.
+ *
  * Do not call the functions of this class outside of callbacks as the daily challenge may have not
  * loaded yet.
  *
