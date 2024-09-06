@@ -5,8 +5,8 @@
  * elements. You can get this class by doing:
  *
  * ```ts
- * const room = game.GetRoom()
- * const backdrop = room.GetBackdrop()
+ * const room = game.GetRoom();
+ * const backdrop = room.GetBackdrop();
  * ```
  *
  * @see https://repentogon.com/index.html
