@@ -1,6 +1,17 @@
 /**
  * This class is for REPENTOGON, an exe-hack which expands the modding API.
  *
+ * This class is used to manage the game's camera. This camera is only active during runs; if you
+ * wish to handle the camera on the main menu, use `MenuManager.GetViewPosition` and
+ * `MenuManager.SetViewPosition` instead.
+ *
+ * To get this class by using `Room.GetCamera()`:
+ *
+ * ```ts
+ * const room = game.GetRoom();
+ * const camera = room.GetCamera();
+ * ```
+ *
  * @see https://repentogon.com/
  */
 declare interface Camera extends IsaacAPIClass {
