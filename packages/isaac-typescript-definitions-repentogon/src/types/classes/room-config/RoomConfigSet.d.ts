@@ -20,7 +20,7 @@ declare interface RoomConfigSet extends IsaacAPIClass {
    */
   Get: (index: int) => RoomConfig | undefined;
 
-  /** The number of rooms in set. */
+  /** The number of rooms in the set. */
   readonly Size: int;
 
   // The underscore methods like `__add` are not implemented in favor of having `add` and so on.
