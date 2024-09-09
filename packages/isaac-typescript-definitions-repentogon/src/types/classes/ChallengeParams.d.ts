@@ -61,6 +61,7 @@ declare global {
     /** Returns the amount of red heart containers the player starts with in the challenge. */
     GetMaxHearts: () => int;
 
+    /** Returns the minimum fire rate the player has. */
     GetMinFireRate: () => number;
 
     /** Returns the name of the challenge. */
@@ -92,7 +93,11 @@ declare global {
 
     /** Returns true if the end-boss of the challenge is Mega Satan. */
     IsMegaSatanRun: () => boolean;
+
+    /** Returns whether the player has a minimum shot speed. */
     IsMinShotSpeedEnabled: () => boolean;
+
+    /** Returns whether challenge requires Isaac to go through the alt path. */
     IsSecretPath: () => boolean;
   }
 }
