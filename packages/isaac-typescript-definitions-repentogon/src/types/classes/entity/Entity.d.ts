@@ -36,7 +36,11 @@ declare global {
     AddBrimstoneMark: (source: EntityRef, duration: int) => void;
 
     /**
-     * Adds an ice effect to the entity.
+     * Adds the ice status effect to the entity.
+     *
+     * There is no visual indicator that determines if the status effect is active. If the entity
+     * dies while the status effect is active, they will be frozen similar to how Uranus tears
+     * freezes enemies.
      *
      * @param source Required. If you do not want the effect to have a source, pass
      *               `EntityRef(undefined)`.
@@ -83,10 +87,7 @@ declare global {
      */
     AddWeakness: (source: EntityRef, duration: int) => void;
 
-    ComputeStatusEffectDuration: (
-      initialLength: int,
-      source: EntityRef,
-    ) => void;
+    ComputeStatusEffectDuration: (initialLength: int, source: EntityRef) => int;
 
     /**
      * Copies the entity's status effects onto the specified target.
@@ -98,8 +99,14 @@ declare global {
      */
     CopyStatusEffects: (target?: Entity, overwrite?: boolean) => void;
 
-    /** Fires all related collision related callbacks with the provided parameters. */
-    ForceCollide: (target: Entity, low: boolean) => void;
+    /**
+     * Attempts force the game to detect a collision between the entity and the provided `target`,
+     * triggering all collision related code such as contact damage.
+     *
+     * @param target
+     * @param low Optional. Default is false.
+     */
+    ForceCollide: (target: Entity, low?: boolean) => boolean;
 
     /** Returns how many frames are left until the baited status effect goes away. */
     GetBaitedCountdown: () => int;
@@ -127,8 +134,12 @@ declare global {
     /** Returns how many frames are left until the charmed status effect goes away. */
     GetCharmedCountdown: () => int;
 
-    /** Returns the entity's collision capsule. */
-    GetCollisionCapsule: (position: Vector) => Capsule;
+    /**
+     * Returns the entity's collision capsule.
+     *
+     * @param offset Optional. Default is `VectorZero`.
+     */
+    GetCollisionCapsule: (offset?: Vector) => Capsule;
 
     /**
      * Returns an array of all of the entity's `ColorParams` queued by the `Entity.SetColor`
@@ -168,6 +179,7 @@ declare global {
     /** Returns how many frames are left until the freeze status effect goes away. */
     GetFreezeCountdown: () => int;
 
+    /** Returns the entity's hit list index. */
     GetHitListIndex: () => int;
 
     /** Returns how many frames are left until the ice status effect goes away. */
@@ -223,7 +235,7 @@ declare global {
      *              a value of 1 would predict where the target's velocity would take them on the
      *              next update.
      */
-    GetPredictedTargetPosition: (target: Entity, delay: number) => void;
+    GetPredictedTargetPosition: (target: Entity, delay: number) => Vector;
 
     /** Returns the size of the entity's shadow. */
     GetShadowSize: () => number;
