@@ -16,8 +16,16 @@ declare interface EntityTear extends Entity {
    */
   MakeMultidimensionalCopy: () => EntityTear;
 
+  /** Returns the red aura sprite used by the Dead Eye. */
   GetDeadEyeSprite: () => Sprite;
+
+  /**
+   * Returns the effect sprite used by numerous tear variants such as Fire Mind and Mysterious
+   * Liquid.
+   */
   GetTearEffectSprite: () => Sprite;
+
+  /** Returns the aura sprite used by Godhead tears. */
   GetTearHaloSprite: () => Sprite;
 
   /** Returns whether the tear was created through the Multidimensional Baby effect. */
@@ -33,10 +41,8 @@ declare interface EntityTear extends Entity {
    * re-evaluate which scale animation to play.
    *
    * @param force Optional. Default is false.
-   *
-   * @customName ResetSpriteScale
    */
-  ResetSpriteScaleEx: (force: boolean) => void;
+  ResetSpriteScale: (force?: boolean) => void;
 
   /** Sets whether the tear was created through the Multidimensional Baby effect. */
   SetMultidimensionalTouched: (touched: boolean) => void;
